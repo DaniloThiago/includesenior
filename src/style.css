@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+#voice {
+  margin: 0;  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+#start {
+  border-radius: 100%;
+  background-color: white;
+  border: none;
+  box-shadow: 0 0 0 15px #23a3fd, 0 0 0 25px #23a2fd3f, 0 0 0 35px #23a2fd0f;
+  margin: 30px;
+}
+#start:focus {
+  outline: none;
+}
+#start img {
+  width: 30px;
+  height: 30px;
+  padding: 20px;
+}
+#voice p {
+  color: #23a3fd;
+}
+#voice p#output {
+  position: relative;
+  width: 100vw;
+  height: 0;
+}
+#voice p span {
+  position: relative;
+  top: 0; left: 0;
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
+}
