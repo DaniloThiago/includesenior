@@ -8,8 +8,13 @@
 #tutorial .no-padding-bot {
   padding-bottom: 0 !important;
 }
-#tutorial.parte1 {
+#tutorial.parte1,
+#tutorial.parte2 {
   background: url(../img/whats/blank.jpg) no-repeat;
+  background-size: 100% 100%;
+}
+#tutorial.parte3 {
+  background: url(../img/whats/maria.jpg) no-repeat;
   background-size: 100% 100%;
 }
 #tutorial .box-message {
@@ -22,12 +27,17 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background: white;
 }
 #tutorial .box-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 200px;
   color: var(--blue);
   font-weight: bold;
   letter-spacing: 1px;
-  text-align: center;
 }
 #tutorial .box-btns {
   position: relative;
@@ -60,4 +70,20 @@
   box-shadow: inset 0 0 0 200px rgba(0,0,0,0.5);
   height: 100%;
   width: 100%;
+}
+#tutorial .btn-sinal {
+  animation-name: example;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+/* Standard syntax */
+@keyframes example {
+  from {border: 15px solid red;}
+  to {
+    border: 20px solid red;
+    bottom: 20px;
+    right: 16px;
+  }
 }

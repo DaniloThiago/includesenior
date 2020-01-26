@@ -1,11 +1,24 @@
-function boxMessage(elem) {
-  elem.atual();
-
-  const body = document.querySelector('#tutorial');
+function boxMessage(elem, func) {
+  if(!!func)
+    func();
   
-  let article = document.createElement("article");
-  article.classList.add("box-message");
-  body.appendChild(article);
+  const body = document.querySelector('#tutorial');
+  let article;
+  article = document.querySelector('#tutorial .box-message');
+  
+  if(!!article) {
+    article.innerHTML = "";
+  } else {
+    article = document.createElement("article");
+    article.classList.add("box-message");
+    body.appendChild(article);
+  }
+
+  if(!!elem.article) {
+    if(!!elem.article.style) {
+      Object.assign(article.style,elem.article.style);
+    }
+  }
   
   let divText = document.createElement("div");
   divText.classList.add("box-text");
@@ -17,6 +30,8 @@ function boxMessage(elem) {
     article.classList.add('no-padding-bot')
     divBtns.classList.add("box-btns");
     article.appendChild(divBtns);
+  } else {
+    article.classList.remove('no-padding-bot')
   }
 
   if(!!elem.goBack) {
@@ -27,10 +42,6 @@ function boxMessage(elem) {
     btnBack.addEventListener("click", ()=>{clickButton(elem, 'goBack');});
     divBtns.appendChild(btnBack);
   }
-
-  // let pipper = document.createElement("text");
-  // pipper.innerHTML = '|';
-  // divBtns.appendChild(pipper);
 
   if(!!elem.goTo) {
     let btnGo = document.createElement("btn");
@@ -53,7 +64,37 @@ function parte1() {
 }
 
 function parte2() {
-  alert('Go To Parte 2');
+  const body = document.querySelector('#tutorial');
+  body.classList.remove("parte3");
+
+  const boxMessage2 ={
+    text: `primeiro clicamos no ícone da conversa (Destacado abaixo) para escolhermos a pessoa.`,
+    // article: {
+    //   style:{
+    //     top: '-250px'
+    //   }
+    // }
+  }
+
+  boxMessage(boxMessage2);
+
+  const style = {
+    position: 'absolute',
+    bottom: '25px',
+    right: '21px',
+    width: '110px',
+    height: '110px',
+    opacity: '0.7',
+    borderRadius: '100%',
+    background: 'none',
+    border: '15px solid red'
+  }
+  
+  sinalizar(style);
+}
+
+function parte3() {
+  alert('Parte 03');
 }
 
 
@@ -66,4 +107,24 @@ function clickButton(elem, action) {
       elem.goTo();
       break;
   }
+}
+
+function sinalizar(style) {
+  const body = document.querySelector('#tutorial');
+  let botao;
+  botao = document.querySelector('#tutorial .btn-sinal');
+  
+  
+  if(!!botao) {
+    botao.innerHTML = "";
+  } else {
+    botao = document.createElement("btn");
+    botao.classList.add("btn-sinal");
+    const s = {
+      position: 'absolute'
+    }
+    Object.assign(botao.style,s);
+    Object.assign(botao.style,style);
+    body.appendChild(botao);
+  } 
 }
