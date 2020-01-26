@@ -1,0 +1,9 @@
+:root {
+  --blue: #23a3fd;
+  --green: #2dc896;
+}  
+body {
+  margin: 0;
+  font-size: 40px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
