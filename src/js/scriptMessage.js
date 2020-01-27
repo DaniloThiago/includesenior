@@ -51,7 +51,6 @@ function boxMessage(elem, func) {
     btnGo.addEventListener("click", ()=>{clickButton(elem, 'goTo');});
     divBtns.appendChild(btnGo);
   }
-
 }
 
 function menu() {
@@ -60,6 +59,19 @@ function menu() {
 
 function parte1() {
   const body = document.querySelector('#tutorial');
+  
+  let imgBtnWhats = document.createElement("img");
+  imgBtnWhats.classList.add("btn-whats");
+  imgBtnWhats.setAttribute('style',`position: absolute;
+  bottom: 40px;
+  right: 35px;
+  width:  170px;
+  height: 170px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;`)  
+  imgBtnWhats.setAttribute('src', './src/img/whats/btn-msg.png')  
+  body.appendChild(imgBtnWhats);
+
   body.classList.add("parte1");
 }
 
