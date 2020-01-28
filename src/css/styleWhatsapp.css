@@ -14,14 +14,14 @@
   background-size: 100% 100%;
 }
 #tutorial.parte3 {
-  background: url(../img/whats/maria.jpg) no-repeat;
+  background: url(../img/whats/contacts.jpg) no-repeat;
   background-size: 100% 100%;
 }
 #tutorial .box-message {
   position: relative;
   width: 90vw;
   padding: 20px 10px;
-  border: 1px solid #666;
+  border: 5px solid #ccc;
   border-radius: 10px;
   box-sizing: border-box;
   display: flex;
@@ -83,7 +83,7 @@
   from {border: 15px solid red;}
   to {
     border: 20px solid red;
-    bottom: 20px;
-    right: 16px;
+    margin-bottom: -5px;
+    margin-right: -5px;
   }
 }
