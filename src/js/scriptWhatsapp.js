@@ -68,13 +68,13 @@ function menu() {
   alert('Go To Menu');
 }
 
-function parte1() {
+function next_parte1() {
   const body = document.querySelector('#tutorial'); 
   btnWhatsapp();
   body.classList.add("parte1");
 }
 
-function parte2() {
+function btnMessage_parte2() {
   const body = document.querySelector('#tutorial');
   body.classList.remove("parte3");
   btnWhatsapp();
@@ -92,10 +92,10 @@ function parte2() {
     borderRadius: '100%'    
   }
   
-  sinalizar(style, parte3);
+  sinalizar(style, btnLupa_parte3);
 }
 
-function parte3() {
+function btnLupa_parte3() {
   let imgBtnWhats = document.querySelector('.btn-whats');
   if(!!imgBtnWhats) imgBtnWhats.remove();
   const body = document.querySelector('#tutorial');
@@ -122,17 +122,17 @@ function parte3() {
     borderRadius: '100%'    
   }
   
-  sinalizar(style, parte4);
+  sinalizar(style, inputText_parte4);
 }
 
-function parte4() {
+function inputText_parte4() {
   let imgBtnWhats = document.querySelector('.btn-whats');
   if(!!imgBtnWhats) imgBtnWhats.remove();
   const body = document.querySelector('#tutorial');
   body.classList.remove("parte1");
   body.classList.add("parte3");
  
-  const boxMessage4 ={
+  const boxMessage4 = {
     text: `vamos fazer um exemplo: clique no campo de busca e digite "maria".`,
     article: {
       style:{
@@ -141,20 +141,44 @@ function parte4() {
       }
     }
   }
-
   boxMessage(boxMessage4);
+  
+  const styleInputText = {
+    top: '70px',
+    left: '0',
+    width: '100%',
+    height: '148px'
+  }
+  inputTextFind('maria', styleInputText);
 
-  const style = {
-    top: '50px',
-    right: '82px',
-    width: '90px',
-    height: '90px',
-    borderRadius: '100%'    
+  const styleSinalizar = {
+    top: '52px',
+    left: 0,
+    width: '100%',
+    height: '180px',
+    boxSizing: 'border-box'
   }
   
-  sinalizar(style, parte4);
+  sinalizar(styleSinalizar, writeMaria);
 }
 
+function writeMaria() {
+  const boxMessage1 = {
+    text: `Agora digite "maria".`,
+    article: {
+      style:{
+        width: '70%',
+        padding: '80px 40px'
+      }
+    }
+  }
+  boxMessage(boxMessage1, focusInput);
+}
+
+function focusInput() {
+  const input = document.querySelector('#inputText');
+  input.focus();
+}
 
 function sinalizar(style, event) {
   const body = document.querySelector('#tutorial');
@@ -181,10 +205,61 @@ function sinalizar(style, event) {
   } 
 }
 
+function inputTextFind(nome, style) {
+  const body = document.querySelector('#tutorial');
+  const temp = document.querySelector('#inputText');
+  if(!!temp) temp.remove();
+
+  let inputText = document.createElement("input");
+  inputText.setAttribute('id','inputText');  
+  inputText.setAttribute('type','"text"');  
+  style.position = 'absolute';
+  style.boxSizing = 'border-box';
+  style.textTransform = 'uppercase';
+  style.padding = '0 150px';
+  style.fontSize = '50px';
+  Object.assign(inputText.style,style);
+
+  inputText.addEventListener('keyup', (e)=>{
+    let name = e.target.value;
+
+    if(name.includes(nome, 0)) {
+      console.log(`ok`)
+    } else if(name.length == 5) {
+      e.target.style.color = 'red';
+    } else if(name.length < 5) {
+      e.target.style.color = 'black';
+    }
+  })
+  
+  let iconBack = document.createElement("img");
+  iconBack.setAttribute('src','./src/ico/svg/arrow_back.svg');
+  let style2 = {
+    position: 'absolute',
+    left: '42px', top: '107px',
+    zIndex: 1, width: '69px'
+  };
+  Object.assign(iconBack.style,style2);
+
+  let iconClose = document.createElement("img");
+  iconClose.setAttribute('src','./src/ico/svg/close.svg');
+  let style3 = {
+    position: 'absolute',
+    right: '42px', top: '107px',
+    zIndex: 1, width: '69px'
+  };
+  Object.assign(iconClose.style,style3);
+  
+  body.appendChild(inputText);
+  body.appendChild(iconBack);
+  body.appendChild(iconClose);
+
+}
+
 function btnWhatsapp() {
   const body = document.querySelector('#tutorial');
   let imgBtnWhats = document.querySelector('.btn-whats');
-  
+
   if(!!imgBtnWhats) return;
   
   imgBtnWhats = document.createElement("img");
