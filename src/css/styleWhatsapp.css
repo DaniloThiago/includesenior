@@ -17,6 +17,14 @@
   background: url(../img/whats/contacts.jpg) no-repeat;
   background-size: 100% 100%;
 }
+#tutorial.findmaria {
+  background: url(../img/whats/findmaria.jpg) no-repeat;
+  background-size: 100% 100%;
+}
+#tutorial.maria {
+  background: url(../img/whats/maria.jpg) no-repeat;
+  background-size: 100% 100%;
+}
 #tutorial .box-message {
   position: relative;
   width: 90vw;

@@ -149,7 +149,7 @@ function inputText_parte4() {
     width: '100%',
     height: '148px'
   }
-  inputTextFind('maria', styleInputText);
+  inputTextFind('maria', styleInputText, viewMaria);
 
   const styleSinalizar = {
     top: '52px',
@@ -164,7 +164,7 @@ function inputText_parte4() {
 
 function writeMaria() {
   const boxMessage1 = {
-    text: `Agora digite "maria".`,
+    text: 'Agora digite "maria".',
     article: {
       style:{
         width: '70%',
@@ -173,6 +173,42 @@ function writeMaria() {
     }
   }
   boxMessage(boxMessage1, focusInput);
+}
+
+function clickMaria() {
+  const boxMessage1 = {
+    text: 'Agora clique no nome de "maria" para abrir a conversa com maria.',
+    article: {
+      style:{
+        width: '70%',
+        padding: '80px 40px'
+      }
+    }
+  }
+  boxMessage(boxMessage1, focusInput);
+}
+
+function viewMaria() {
+  const body = document.querySelector('#tutorial');
+  body.classList.remove("parte-3");
+  body.classList.add("findmaria");
+  clickMaria();
+
+  const styleSinalizar = {
+    top: '229px',
+    left: 0,
+    width: '100%',
+    height: '180px',
+    boxSizing: 'border-box'
+  }
+  
+  sinalizar(styleSinalizar, maria);
+}
+
+function maria() {
+  const body = document.querySelector('#tutorial');
+  body.classList.remove("findmaria");
+  body.classList.add("maria");
 }
 
 function focusInput() {
@@ -205,7 +241,7 @@ function sinalizar(style, event) {
   } 
 }
 
-function inputTextFind(nome, style) {
+function inputTextFind(nome, style, callback) {
   const body = document.querySelector('#tutorial');
   const temp = document.querySelector('#inputText');
   if(!!temp) temp.remove();
@@ -224,7 +260,9 @@ function inputTextFind(nome, style) {
     let name = e.target.value;
 
     if(name.includes(nome, 0)) {
-      console.log(`ok`)
+      if(!!callback) callback();
+      inputText.blur();
+      inputText.setAttribute('disabled','true')
     } else if(name.length == 5) {
       e.target.style.color = 'red';
     } else if(name.length < 5) {
@@ -237,7 +275,7 @@ function inputTextFind(nome, style) {
   let style2 = {
     position: 'absolute',
     left: '42px', top: '107px',
-    zIndex: 1, width: '69px'
+    zIndex: 0, width: '69px'
   };
   Object.assign(iconBack.style,style2);
 
@@ -246,7 +284,7 @@ function inputTextFind(nome, style) {
   let style3 = {
     position: 'absolute',
     right: '42px', top: '107px',
-    zIndex: 1, width: '69px'
+    zIndex: 0, width: '69px'
   };
   Object.assign(iconClose.style,style3);
   
