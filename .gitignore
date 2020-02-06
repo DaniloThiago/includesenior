@@ -1,3 +1,4 @@
 temp/
 *.zip
 *_*.svg
+.DS_Store
